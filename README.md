@@ -18,16 +18,37 @@ mkdir -p assignments/assignment
 aarch64-none-linux-gnu-gcc -v -print-sysroot > assignments/assignment2/cross-compile.txt
 ```
 
-## Testing
+## [Testing](https://github.com/cu-ecen-aeld/assignment-autotest/)
 
-The basis of the automated test implementation for this repository comes from [https://github.com/cu-ecen-aeld/assignment-autotest/](https://github.com/cu-ecen-aeld/assignment-autotest/)
-
-The assignment-autotest directory contains scripts useful for automated testing  Use
-```
+```bash
+git clone git@github.com:cu-ecen-aeld/assignment-2-JeanG00.git
+git remote add assignments-base git@github.com:cu-ecen-aeld/aesd-assignments.git
+git fetch assignments-base
+git merge assignments-base/<branchname>
 git submodule update --init --recursive
+# ... DO HOMEWORKS
+git commit -am "feat: assignments done"
+git push -u origin main
 ```
-to synchronize after cloning and before starting each assignment, as discussed in the assignment instructions.
 
-As a part of the assignment instructions, you will setup your assignment repo to perform automated testing using github actions.  See [this page](https://github.com/cu-ecen-aeld/aesd-assignments/wiki/Setting-up-Github-Actions) for details.
+## Assignments Grading Criteria
 
-Note that the unit tests will fail on this repository, since assignments are not yet implemented.  That's your job :) 
+### [assignment-1-instructions](https://www.coursera.org/learn/linux-system-programming-introduction-to-buildroot/supplement/bnixD/assignment-1-instructions)
+
+### [assignment-2-instructions](https://www.coursera.org/learn/linux-system-programming-introduction-to-buildroot/supplement/U1Beh/assignment-2-instructions)
+
+1. Your `assignments/assignment2/cross-compile.txt` file should show the version, configuration and sysroot path (output of `-print-sysroot`)
+
+2. The `finder-test.sh` script should return “success” when run.
+
+3. Your writer application should meet requirements from assignment 1 regarding error handling. 
+
+4. Ensure all error handling has been implemented for writer.c.
+
+    Ensure syslog logging is setup and working properly (you should see messages logged to `/var/log/syslog` on your Ubuntu VM).
+
+    If using Windows Subsystem for Linux, you may need to manually start rsyslog with `sudo service rsyslog start`
+
+5. Your `assignments/assignment2/fileresult.txt` should show that you were able to cross compile successfully
+
+6. Your github actions automated test script should pass on your repository and the “Actions” tab should show a successful run on your last commit.
